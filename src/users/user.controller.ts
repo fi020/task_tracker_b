@@ -1,9 +1,10 @@
 import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
 import { UserService } from './user.service';
 import { SignupDto } from 'src/dto/signup.dto';
+import { LoginDto } from 'src/dto/login.dto';
 // import { JwtService } from '@nestjs/jwt';
 
-@Controller('auth')
+@Controller('user')
 export class UserController {
   constructor(private usersService: UserService) {}
 
@@ -25,6 +26,7 @@ async signup(@Body() signupDto: SignupDto) {
 
   
 
+
 //   @Post('login')
 //   async login(
 //     @Body('username') username: string,
@@ -37,4 +39,10 @@ async signup(@Body() signupDto: SignupDto) {
 //     const token = await this.usersService.login(user);
 //     return { token };
 //   }
+@Post('login')
+async login(@Body() loginDto: LoginDto) {
+  const token = await this.usersService.login(loginDto);
+  return { token };
+}
+
 }
