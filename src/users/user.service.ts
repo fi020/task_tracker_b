@@ -38,9 +38,9 @@ export class UserService {
     return null;
   }
 
-  // Uncomment this if you want to use JWT for authentication
-  // async login(user: User): Promise<string> {
-  //   const payload = { username: user.username, sub: user._id };
-  //   return this.jwtService.sign(payload);
-  // }
+
+//   async login(user: User): Promise<string> {
+//     const payload = { username: user.username, sub: user._id };
+//     return this.jwtService.sign(payload);
+//   }
 }

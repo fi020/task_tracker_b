@@ -9,7 +9,7 @@ export class SignupDto {
   @MinLength(6, { message: 'Password must be at least 6 characters long' })
   password: string;
 
-//   @IsString()
-//   @Matches('password', { message: 'Password confirmation must match the password' })
-//   confirmPassword: string;
+  // @IsString()
+  // @Matches('password', { message: 'Password confirmation must match the password' })
+  // confirmPassword: string;
 }

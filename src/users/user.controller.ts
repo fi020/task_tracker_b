@@ -5,20 +5,20 @@ import { SignupDto } from 'src/dto/signup.dto';
 
 @Controller('auth')
 export class UserController {
-  constructor(private authService: UserService) {}
+  constructor(private usersService: UserService) {}
 
 //   @Post('signup')
 //   async signup(
 //     @Body('username') username: string,
 //     @Body('password') password: string,
 //   ) {
-//     await this.authService.signup(username, password);
+//     await this.usersService.signup(username, password);
 //     return { message: 'User registered successfully' };
 //   }
 
 @Post('signup')
 async signup(@Body() signupDto: SignupDto) {
-  await this.authService.signup(signupDto); // Pass the whole DTO
+  await this.usersService.signup(signupDto); // Pass the whole DTO
   return { message: 'User registered successfully' };
 }
 
@@ -30,11 +30,11 @@ async signup(@Body() signupDto: SignupDto) {
 //     @Body('username') username: string,
 //     @Body('password') password: string,
 //   ) {
-//     const user = await this.authService.validateUser(username, password);
+//     const user = await this.usersService.validateUser(username, password);
 //     if (!user) {
 //       throw new UnauthorizedException('Invalid credentials');
 //     }
-//     const token = await this.authService.login(user);
+//     const token = await this.usersService.login(user);
 //     return { token };
 //   }
 }
