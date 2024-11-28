@@ -14,6 +14,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './db/database.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './users/user.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AppService } from './app.service';
       isGlobal: true, // Make environment variables available globally
     }),
     DatabaseModule,
+    UserModule
 
     // Add other feature modules here
   ],
