@@ -10,6 +10,8 @@ export class UserController {
 
     @Post('signup')
     async signup(@Body() signupDto: SignupDto) {
+        console.log("signup post");
+        
         await this.usersService.signup(signupDto); // Pass the whole DTO
         return { message: 'User registered successfully' };
     }
