@@ -15,6 +15,7 @@ import { DatabaseModule } from './db/database.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './users/user.module';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { UserModule } from './users/user.module';
       isGlobal: true, // Make environment variables available globally
     }),
     DatabaseModule,
-    UserModule
+    UserModule,
+    TaskModule
 
     // Add other feature modules here
   ],

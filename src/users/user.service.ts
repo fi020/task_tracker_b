@@ -39,7 +39,9 @@ export class UserService {
         throw new UnauthorizedException('Invalid credentials > pasword not match');
       }
 
-    const payload = { username: user.username, sub: user.id };  // Use the correct identifier field for your model
+    const payload = { username: user.username, id: user.id };  // Use the correct identifier field for your model
+    console.log(payload);
+    
     return this.createJwtToken(payload);
   }
 
