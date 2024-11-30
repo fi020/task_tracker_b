@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Request, UseGuards, Delete, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Request, UseGuards, Delete, Param, Put, Patch } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'; // Adjust path
 import { CreateTaskDto } from 'src/dto/task.dto';
@@ -26,7 +26,7 @@ export class TaskController {
 
 
     // Update an existing task
-    @Put(':taskId')
+    @Patch(':taskId')
     async updateTask(
       @Request() req,
       @Param('taskId') taskId: string,
