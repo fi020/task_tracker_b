@@ -6,24 +6,34 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
-  // await app.listen(process.env.PORT ?? 3000);
- // Enable CORS
-//  app.enableCors({
-//   origin: ['http://localhost:8084'], // Allow frontend URL
-//   credentials: true, // Allow cookies or auth headers if needed
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // HTTP methods you want to allow
-// });
 
- // Configure CORS
- const corsOptions: CorsOptions = {
-  origin: 'http://localhost:8084', // Allow your frontend's domain
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'], // Include PATCH here
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow required headers
-};
+  // Define allowed origins directly as a list
+  const allowedOrigins: string[] = [
+    // 'http://localhost:8084',
+    // 'https://staging.your-domain.com',
+    // 'https://your-domain.com'
+    process.env.LOCAL_ORIGINS,
+    process.env.VERCLE_FINAL_ORIGINS,
+    process.env.RANDOM_ORIGINS,
+    process.env.VERCLE_ORIGINS
+  ];
 
-app.enableCors(corsOptions);
+  // Configure CORS options
+  const corsOptions: CorsOptions = {
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'], // Include PATCH
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+    credentials: true, // Allow cookies/auth headers
+  };
 
+  // Enable CORS with the chosen options
+  app.enableCors(corsOptions);
 
-  await app.listen(process.env.PORT ?? 3000);
+  // Start the server
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  console.log(`Application is running on port ${port}`);
+  console.log(`Allowed origins: ${allowedOrigins.join(', ')}`);
 }
+
 bootstrap();
