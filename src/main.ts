@@ -14,6 +14,7 @@ async function bootstrap() {
     // 'https://your-domain.com'
     process.env.LOCAL_ORIGINS,
     process.env.VERCLE_FINAL_ORIGINS,
+    process.env.NETLIFY_FINAL_ORIGINS,
     process.env.RANDOM_ORIGINS,
     process.env.VERCLE_ORIGINS
   ];
