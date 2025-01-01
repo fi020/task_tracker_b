@@ -12,11 +12,13 @@ import { JwtStrategy } from 'src/auth/jwt.strategy';
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     JwtModule.register({
-        secret: 'your-secret-key', // Replace with environment variable in production
+        secret: process.env.JWT_SECRET, // Replace with environment variable in production
+        // secret: 'your-secret-key', // Replace with environment variable in production
         signOptions: { expiresIn: '1h' },
       }),
   ],
   controllers: [UserController],
+  // providers: [UserService],
   providers: [UserService,JwtStrategy],
   exports: [UserService],
 })
