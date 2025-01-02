@@ -38,4 +38,11 @@ export class SettingsController {
     console.log('Forgot password route');
     return this.settingsService.forgotPassword(email);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('email/resend-otp')
+  async resendOtp(@Req() req) {
+    const userId = req.user.userId; // Extracted from JWT token
+    return this.settingsService.resendOtp(userId);
+  }
 }

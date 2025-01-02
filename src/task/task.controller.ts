@@ -23,8 +23,6 @@ export class TaskController {
     
     return this.taskService.createTask(userId, createTaskDto);
   }
-
-
     // Update an existing task
     @Patch(':taskId')
     async updateTask(
@@ -38,8 +36,6 @@ export class TaskController {
       console.log("update ctrl");
       return this.taskService.updateTask(userId, taskId, updateTaskDto);
     }
-
-
 
   @Delete(':taskId')
   async deleteTask(@Request() req, @Param('taskId') taskId: string) {

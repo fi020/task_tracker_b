@@ -7,7 +7,7 @@ import { Task } from 'src/schemas/task.schema';
 
 @Injectable()
 export class TaskService {
-  constructor(@InjectModel(Task.name) private taskModel: Model<Task>) {}
+  constructor(@InjectModel(Task.name) private taskModel: Model<Task>) { }
 
   async getTasks(userId: string): Promise<Task[]> {
     return this.taskModel.find({ userId }).exec();
@@ -17,9 +17,6 @@ export class TaskService {
     const newTask = new this.taskModel({ ...createTaskDto, userId });
     return newTask.save();
   }
-
-
-
   // Update an existing task
   async updateTask(
     userId: string,
@@ -27,11 +24,11 @@ export class TaskService {
     updateTaskDto: UpdateTaskDto,
   ): Promise<Task> {
     console.log("update serveice");
-    console.log(taskId,userId);
-    
+    console.log(taskId, userId);
+
     const task = await this.taskModel.findOne({ _id: taskId, userId });
     console.log(task);
-    
+
     console.log("update serveice");
     if (!task) {
       throw new NotFoundException('Task not found > with the user id with in the token');
@@ -41,19 +38,7 @@ export class TaskService {
     Object.assign(task, updateTaskDto);
     return task.save();
   }
-  // // Delete a task
-  // async deleteTask(userId: string, taskId: string): Promise<void> {
-  //   const result = await this.taskModel.deleteOne({ _id: taskId, userId });
 
-  //   if (result.deletedCount === 0) {
-  //     throw new NotFoundException('Task not found');
-  //   }
-  //   // return {
-  //   //   message: 'Task successfully deleted',
-  //   //   // deletedCount: result.deletedCount, // Number of deleted documents
-  //   //   // taskId: taskId, // Optionally, return the taskId as well
-  //   // };
-  // }
 
   async deleteTask(userId: string, taskId: string): Promise<any> {
     const result = await this.taskModel.deleteOne({ _id: taskId, userId });

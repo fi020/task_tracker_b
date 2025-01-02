@@ -4,8 +4,6 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { SettingsService } from './settings.service';
 import { SettingsController } from './settings.controller';
 import { Setting, SettingSchema } from './schemas/setting.schema';
-import { UserService } from 'src/users/user.service';
-import { UserModule } from 'src/users/user.module';
 import { User, UserSchema } from 'src/schemas/user.schema';
 import { ConfigModule } from '@nestjs/config';
 

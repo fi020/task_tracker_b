@@ -54,17 +54,5 @@ export class UserService {
     });
   }
 
-  async updatePassword(userId: string, newPassword: string): Promise<User> {
-    const user = await this.userModel.findById(userId);
-    if (!user) {
-      throw new NotFoundException('User not found.');
-    }
-
-    // Update the user's password (you should hash the password in a real-world app)
-    user.password = newPassword; // You might want to hash this password before saving
-    await user.save();
-    return user;
-  }
-
 
 }

@@ -7,7 +7,7 @@ export class Setting extends Document {
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User', required: true })
   userId: string;
 
-  @Prop({ type: String, required: false })
+  @Prop({ type: String, required: false , unique: true})
   email: string;
 
   @Prop({ type: Boolean, default: false })
