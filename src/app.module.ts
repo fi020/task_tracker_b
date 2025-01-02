@@ -16,6 +16,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './users/user.module';
 import { TaskModule } from './task/task.module';
+import { SettingsModule } from './settings/settings.module';
+// import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -24,7 +26,9 @@ import { TaskModule } from './task/task.module';
     }),
     DatabaseModule,
     UserModule,
-    TaskModule
+    TaskModule,
+    SettingsModule,
+    // MailModule
 
     // Add other feature modules here
   ],
