@@ -28,9 +28,7 @@ import { SettingsModule } from './settings/settings.module';
     UserModule,
     TaskModule,
     SettingsModule,
-    // MailModule
 
-    // Add other feature modules here
   ],
   controllers: [AppController], // added this so that i can test my backend local url
   providers: [AppService], // added this so that i can test my backend local url

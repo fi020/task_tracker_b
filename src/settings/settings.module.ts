@@ -7,21 +7,24 @@ import { Setting, SettingSchema } from './schemas/setting.schema';
 import { UserService } from 'src/users/user.service';
 import { UserModule } from 'src/users/user.module';
 import { User, UserSchema } from 'src/schemas/user.schema';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(), // Load .env variables
+
     MongooseModule.forFeature([
       { name: Setting.name, schema: SettingSchema },
       { name: User.name, schema: UserSchema }, // Make sure UserModel is imported here
     ]),
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.gmail.com',
-        port: 587,
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
         secure: false,
         auth: {
-          user: 'forinternship.020@gmail.com',
-          pass: 'yrzvannxrtxuiztx',
+          user: process.env.SMTP_MAIL,
+          pass: process.env.SMTP_PASSWORD,
         },
       },
     }),

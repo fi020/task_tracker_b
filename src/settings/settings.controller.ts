@@ -32,13 +32,7 @@ export class SettingsController {
     console.log('Get user settings route');
     return this.settingsService.getUserSettings(userId);
   }
-  
-  // @UseGuards(JwtAuthGuard)
-  // @Put('password')
-  // async changePassword(@Req() req, @Body('password') password: string) {
-  //   const userId = req.user.id;
-  //   return this.settingsService.changePassword(userId, password);
-  // }
+
   @Post('forgot-password')
   async forgotPassword(@Body('email') email: string) {
     console.log('Forgot password route');
