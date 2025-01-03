@@ -20,7 +20,7 @@ export class UserController {
   async signup(@Body() signupDto: SignupDto) {
     this.log("signup post");
 
-    await this.usersService.signup(signupDto); // Pass the whole DTO
+    await this.usersService.signup(signupDto);
     return { message: 'User registered successfully' };
   }
 

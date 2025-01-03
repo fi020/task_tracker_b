@@ -8,7 +8,6 @@ import { SignupDto } from '../dto/signup.dto';
 import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from 'src/dto/login.dto';
 
-
 @Injectable()
 export class UserService {
   constructor(

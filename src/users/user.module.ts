@@ -6,14 +6,11 @@ import { UserService } from './user.service';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from 'src/auth/jwt.strategy';
 
-
-
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     JwtModule.register({
-        secret: process.env.JWT_SECRET, // Replace with environment variable in production
-        // secret: 'your-secret-key', // Replace with environment variable in production
+        secret: process.env.JWT_SECRET,
         signOptions: { expiresIn: '1h' },
       }),
   ],
